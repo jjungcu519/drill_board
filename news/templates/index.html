@@ -2,6 +2,16 @@
 
 {% block body %}
 
-<h2>뉴스홈입니다.</h2>
+    {% for news in news %}
+        <h5>{{news.title}}</h5>
+        <p>{{news.content}}</p>
+        <p>{{news.created_at}}</p>
+        <form action="{% url 'news:delete' id=news.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="delete">
+        </form>
+        <hr>
+
+    {% endfor %}
 
 {% endblock %}
