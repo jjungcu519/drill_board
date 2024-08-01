@@ -46,6 +46,27 @@ def delete(request, id):
         news.delete()
     return redirect('news:index')
 
+def update(request, id):
+    news = News.objects.get(id=id)
+
+    if request.method == 'POST':
+        form = NewsForm(request.POST, instance=news)
+
+        if form.is_valid():
+            form.save()
+            return redirect('news:index')
+    else:
+        form = NewsForm(instance=news)
+    
+    context = {
+        'form' : form,
+    }
+
+    return render(request, 'update.html', context)
+
+    
+
+
 # def create(request):
 #     #(2)
 #     if request.method == 'POST':
