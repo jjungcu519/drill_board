@@ -38,7 +38,7 @@ def create(request):
             'form' : form,
         }
         # 4,9. create.html을 랜더링
-        return render(request, 'create.html', context)
+        return render(request, 'form.html', context)
 
 def delete(request, id):
     if request.method == 'POST':
@@ -62,7 +62,7 @@ def update(request, id):
         'form' : form,
     }
 
-    return render(request, 'update.html', context)
+    return render(request, 'form.html', context)
 
     
 

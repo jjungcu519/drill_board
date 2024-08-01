@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<h2>create</h2>
+
+{% if request.resolver_match.url_name =='create' %}
+    <h2>create</h2>
+{% else %}
+    <h2>update</h2>
+{% endif %}
+
 <form action="" method="POST">
     {% csrf_token %}
     {{form}}
     <input type="submit">
 </form>
+
 {% endblock %}
